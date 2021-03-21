@@ -32,5 +32,5 @@ VSCode를 실행하면 오른쪽 아래에 '권장 확장 프로그램 설치' �
 #### 3. OpenCV 실행
 
 ```shell
-> python3 youtube.py
+> python3 Project_1/project1.py
 ```
