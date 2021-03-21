@@ -3,10 +3,8 @@
 #### 프로그램 설치
 
 - Git
-- Python 3.9 이상
+- Python v3.9 이상
 - Visual Studio Code
-
-VSCode에서 프로젝트에서 권장하는 확장 프로그램(Python, npm Intellisense 등)을 설치한다. (1번에서 계속)
 
 #### 1. 프로젝트 다운로드
 
@@ -24,7 +22,8 @@ VSCode를 실행하면 오른쪽 아래에 '권장 확장 프로그램 설치' �
 
 ```shell
 > git checkout (브랜치 이름)
-> python3 -m pip install -r requirements.txt
+> python3 -m pip install --upgrade pip
+> python3 -m pip install -r Project_1/requirements.txt
 ```
 
 이동하고 싶은 브랜치로 이동한 후 프로젝트에 필요한 외부 패키지를 설치한다.
