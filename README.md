@@ -2,8 +2,8 @@
 
 #### 프로그램 설치
 
-- Git
-- Python v3.9 이상
+- Git v2.28
+- Python v3.9
 - Visual Studio Code
 
 #### 1. 프로젝트 다운로드
