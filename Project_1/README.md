@@ -1,5 +1,5 @@
 ### 프로젝트 설명 문서
-상단 첨부: __*cv_project(fin).pdf*__
+상단 첨부: __*cv_project1(fin).pdf*__
 
 ### 프로젝트 실행 과정
 
