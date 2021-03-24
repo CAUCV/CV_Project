@@ -34,9 +34,9 @@ def get_histogram(img_patches, bin):
     patch_hist = []
 
     for i in range(8):
-        img_patches[i] = cv2.GaussianBlur(img_patches[i], (3, 3), 0)
-        dx = cv2.Sobel(img_patches[i], cv2.CV_32F, 1, 0, ksize=3)
-        dy = cv2.Sobel(img_patches[i], cv2.CV_32F, 0, 1, ksize=3)
+        img_patches[i] = cv2.GaussianBlur(img_patches[i], (5, 5), 0)
+        dx = cv2.Sobel(img_patches[i], cv2.CV_32F, 1, 0, ksize=5)
+        dy = cv2.Sobel(img_patches[i], cv2.CV_32F, 0, 1, ksize=5)
         mag, angle = cv2.cartToPolar(dx, dy, angleInDegrees=True) # 벡터의 크기, 각도
         #mag = cv2.normalize(mag, 0, 255, cv2.NORM_MINMAX)
 
@@ -84,7 +84,7 @@ def draw_match(result):
 
 # Read Image1
 image_1 = cv2.imread("1st.jpg")
-#image_1 = cv2.cvtColor(image_1, cv2.COLOR_RGB2GRAY)
+image_1 = cv2.cvtColor(image_1, cv2.COLOR_RGB2GRAY)
 image_1 = cv2.resize(image_1, (600, 800))
 cv2.namedWindow('image_1')
 cv2.setMouseCallback('image_1', get_point)
@@ -101,7 +101,7 @@ while(1):
 
 # Read Image2
 image_2 = cv2.imread("2nd.jpg")
-#image_2 = cv2.cvtColor(image_2, cv2.COLOR_RGB2GRAY)
+image_2 = cv2.cvtColor(image_2, cv2.COLOR_RGB2GRAY)
 image_2 = cv2.resize(image_2, (600, 800))
 cv2.namedWindow('image_2')
 cv2.setMouseCallback('image_2', get_point)
@@ -118,10 +118,10 @@ while(1):
 print('points: ', points)
 
 # Get corner patches
-img_patches = get_patches(size=27)
+img_patches = get_patches(size=25)
 
 # Get histograms
-bin = 180
+bin = 36
 patch_hist = get_histogram(img_patches, bin)
 draw_histogram(patch_hist, bin)
 result = compare_histogram(patch_hist)
