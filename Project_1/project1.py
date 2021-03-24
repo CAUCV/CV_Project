@@ -14,7 +14,6 @@ def save_point(x, y):
     point = [x, y]
     points.append(point)
 
-
 def get_point(event, x, y, flags, param):
     global num
     if event == cv2.EVENT_LBUTTONDOWN:
@@ -40,7 +39,6 @@ def get_patches(size):
         )
     return img_patches
 
-
 def get_histogram(img_patches, bin):
     patch_hist = []
     for i in range(8):
@@ -56,7 +54,6 @@ def get_histogram(img_patches, bin):
 
     return patch_hist
 
-
 def draw_histogram(patch_hist, bin):
     fig, ax = plt.subplots(2, 4, figsize=(20, 15))
     bin_x = np.arange(bin)
@@ -69,7 +66,6 @@ def draw_histogram(patch_hist, bin):
         ax[1, i].set_title("[image_2] NO." + str(i + 5))
     plt.show()
 
-
 def compare_histogram(patch_hist):
     result = []
     for a in range(4):
@@ -81,7 +77,6 @@ def compare_histogram(patch_hist):
         result.append(temp_dist.index(min(temp_dist)) + 3)
     # print(result)
     return result
-
 
 def draw_match(result):
     match_img = np.hstack((copy_img1, copy_img2))
@@ -137,7 +132,7 @@ print("points: ", points)
 img_patches = get_patches(size=25)
 
 # Get histograms
-bin = 36
+bin = 180
 patch_hist = get_histogram(img_patches, bin)
 draw_histogram(patch_hist, bin)
 result = compare_histogram(patch_hist)
