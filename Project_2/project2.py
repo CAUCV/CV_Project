@@ -45,8 +45,8 @@ def getHomography():
 # img1 -> img2
 def warp(img1, img2, H):
     H_inv = np.linalg.inv(H)
-    for y in range(img2.shape[0]): # rows 400
-        for x in range(img2.shape[1]): # cols 300
+    for y in range(img2.shape[0]): # rows
+        for x in range(img2.shape[1]): # cols
             coor = np.array([x, y, 1]).reshape(3,1) # 좌표를 3x1로 바꿔 (Homogeneous coordinates)
             tmp_coor = np.matmul(H_inv, coor)       # (3x3)*(3x1) --> tmp_coor은 3x1 배열
             tmp_coor = tmp_coor/tmp_coor[2,0]       # x/w, y/w : Homogeneous 좌표계 -> Image 좌표계
@@ -57,7 +57,6 @@ def warp(img1, img2, H):
             b = float(trans_coor[1] - ty)
 
             # Bilinear interpolation - 교수님이 강조한 부분(2)
-            # ty 가 299인 경우가 있어서 강의 자료처럼 +1을 하면 300이 되서 index boundary error가 발생한다.. 왜지?!?
             if tx >= 0 and tx < img2.shape[1] and ty >= 0 and ty < img2.shape[0]:
                 for i in range(3):
                     img2[y, x][i] = round((((1.0 - a) * (1.0 - b)) * img1[ty, tx][i])
