@@ -49,7 +49,7 @@ def warp(img1, img2, H):
         for x in range(img2.shape[1]): # cols 300
             coor = np.array([x, y, 1]).reshape(3,1) # 좌표를 3x1로 바꿔 (Homogeneous coordinates)
             tmp_coor = np.matmul(H_inv, coor)       # (3x3)*(3x1) --> tmp_coor은 3x1 배열
-            tmp_coor = tmp_coor/tmp_coor[2,0]       # 3번째 row 값으로 나눈다 (공식이 그렇다...강의자료에는 없는듯)
+            tmp_coor = tmp_coor/tmp_coor[2,0]       # x/w, y/w : Homogeneous 좌표계 -> Image 좌표계
             trans_coor = [round(tmp_coor[0,0]), round(tmp_coor[1,0])] #round : 반올림
             tx = round(trans_coor[0])
             ty = round(trans_coor[1])
